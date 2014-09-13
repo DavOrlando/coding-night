@@ -1,6 +1,6 @@
 /* It's a function that create a slider to filter the ads, or other object, only with the price value*/
 
-function create_filter_slider(currency) { //use i18n to set the correct currency
+function create_filter_slider(currency) {
 
     $("#Slider_div_length").slider({
         range: true,
@@ -11,7 +11,7 @@ function create_filter_slider(currency) { //use i18n to set the correct currency
         slide: function (event, ui) {
             $("#Slider_pricemin").val(ui.values[0]+currency);
             $("#Slider_pricemax").val(ui.values[1]+currency);
-            hidePriceFilter();          //it's the call to method that hides the ads
+            hidePriceFilter();
         }
     });
 
@@ -20,6 +20,7 @@ function create_filter_slider(currency) { //use i18n to set the correct currency
         var parse_value = parseInt(value);
         var second_value = parseInt($("#Slider_pricemax").val());
         $("#Slider_div_length").slider({values: [parse_value, second_value]});
+        $("#Slider_pricemin").val($('#Slider_pricemin').val()+currency);
         hidePriceFilter();
     });
 
@@ -29,6 +30,8 @@ function create_filter_slider(currency) { //use i18n to set the correct currency
         var parse_value = parseInt(value);
         var first_value = parseInt($("#Slider_pricemin").val());
         $("#Slider_div_length").slider({values: [first_value, parse_value]});
+        $("#Slider_pricemax").val($('#Slider_pricemax').val()+currency);
+        console.log(this);
         hidePriceFilter();
     });
 }
