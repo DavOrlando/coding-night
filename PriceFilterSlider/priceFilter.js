@@ -15,3 +15,23 @@ function hidePriceFilter() {
 
     }
 }
+
+
+/* Hide divs that have a different kind of price, for example if user set price to "for night"
+ this method hides all divs that haven't got this category of price.
+Modify the id in jquery functions to adapt this to your code */
+
+function hidePriceKindFilter() {
+    var kind_price = ($(".kind_price_selectbox").val());
+    var real_kind_price = ($(".adpr_real_kind_price").text());
+    var real_kind_prices = real_kind_price.split(/(?=[A-Z])/);
+    if (kind_price != "Tutte le tipologie") {
+        for (var i = 0; i < real_kind_prices.length; i++) {
+            if (kind_price != real_kind_prices[i]) {
+                $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").hide();
+            }
+            else $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").show();
+        }
+    }
+    else $("div.ad_preview").show();
+}
