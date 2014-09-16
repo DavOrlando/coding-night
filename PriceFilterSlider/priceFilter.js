@@ -2,17 +2,19 @@
 //Modify the id in jquery functions to adapt this to your code
 
 function hidePriceFilter() {
-    var pricemin = parseInt($("#pricemin").val());
-    var pricemax = parseInt($("#pricemax").val());
-    var price_temp = $(".real_price").text();
-    var price_string = price_temp.substring(0,(price_temp.length-1)).replace(/\€/g, ' ').split(" "); //create an array of integer, where the values are the prices
+    var pricemin = parseInt($("#Slider_pricemin").val());
+    var pricemax = parseInt($("#Slider_pricemax").val());
+    var price_temp = $(".adpr_real_price").text();
+    var price_string = price_temp.substring(0, (price_temp.length - 1)).replace(/\€/g, ' ').split(" ");
     for (var i = 0; i < price_string.length; i++) {
         var price_int = parseInt(price_string[i]);
         if (price_int > pricemax || price_int < pricemin) {
-            $( "div.ad_preview:contains("+"'"+price_int+"'"+")" ).css( "display", "none" ); //edit this to choose where the magic should run
+            $("div.ad_preview:contains(" + "'" + price_int + "'" + ")").addClass('is-price-filtered');
         }
-        else  $( "div.ad_preview:contains("+"'"+price_int+"'"+")" ).css( "display", "block" );
-
+        else
+        {
+            $("div.ad_preview:contains(" + "'" + price_int + "'" + ")").removeClass('is-price-filtered');
+        }
     }
 }
 
@@ -28,10 +30,10 @@ function hidePriceKindFilter() {
     if (kind_price != "Tutte le tipologie") {
         for (var i = 0; i < real_kind_prices.length; i++) {
             if (kind_price != real_kind_prices[i]) {
-                $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").hide();
+                $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").addClass('is-pricekind-filtered');
             }
-            else $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").show();
+            else $("div.ad_preview:contains(" + "'" + real_kind_prices[i] + "'" + ")").removeClass('is-pricekind-filtered');
         }
     }
-    else $("div.ad_preview").show();
+    else $("div.ad_preview").removeClass('is-pricekind-filtered');
 }
