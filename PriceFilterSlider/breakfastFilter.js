@@ -17,6 +17,6 @@ function hideBreakfastFilter() {
     }
     else {
         $(".ad_preview").addClass('is-breakfast-filtered');
-        $("div.ad_preview .adpr_breakfast:contains(" + "'" + 'true' + "'" + ")").removeClass('is-breakfast-filtered');
+        $("div.ad_preview:contains(" + "'" + 'trueBREAKFAST' + "'" + ")").removeClass('is-breakfast-filtered');
     }
 }
