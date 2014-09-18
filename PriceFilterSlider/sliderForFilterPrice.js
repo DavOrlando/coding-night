@@ -25,6 +25,7 @@ function create_filter_slider(currency) {
     });
 
 
+
     $("#Slider_pricemax").change(function () {
         var value = this.value;
         var parse_value = parseInt(value);
