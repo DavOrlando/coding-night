@@ -15,6 +15,7 @@ function create_filter_slider(currency) {
         }
     });
 
+
     $("#Slider_pricemin").change(function () {
         var value = this.value;
         var parse_value = parseInt(value);
